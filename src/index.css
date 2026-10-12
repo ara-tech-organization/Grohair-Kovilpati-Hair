@@ -104,7 +104,7 @@
      italic axis is requested, because nothing on the page is set in italic —
      so nothing may set `font-style: italic`, or the browser will synthesize a
      slant that overhangs its inline box and gets clipped by a masked reveal. */
-  --font: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-display: var(--font);
 
   color-scheme: light;
