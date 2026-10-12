@@ -21,7 +21,6 @@ import './theme.css'
    the trust bar stay eager — they are the first screen and the first scroll. */
 const About = lazy(() => import('./components/About'))
 const Results = lazy(() => import('./components/Results'))
-const Process = lazy(() => import('./components/Process'))
 const Services = lazy(() => import('./components/Services'))
 const WhyUs = lazy(() => import('./components/WhyUs'))
 const Reviews = lazy(() => import('./components/Reviews'))
@@ -85,10 +84,6 @@ export default function App() {
 
         <LazySection anchorId="results" minHeight={720}>
           <Results />
-        </LazySection>
-
-        <LazySection anchorId="process" minHeight={720}>
-          <Process />
         </LazySection>
 
         <LazySection anchorId="treatments" minHeight={760}>

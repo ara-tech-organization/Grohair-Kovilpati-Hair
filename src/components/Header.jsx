@@ -29,8 +29,7 @@ const NAV = [
    Page order, not menu order. `resolve` keeps the last id whose top has passed
    the offset, so the list has to read top to bottom, and Booking is above
    About. */
-/* Process has a section but no menu item, so it is listed here by hand. */
-const SPY_IDS = ['book', 'about', 'results', 'process', 'treatments', 'reviews', 'faq']
+const SPY_IDS = ['book', 'about', 'results', 'treatments', 'reviews', 'faq']
 
 export default function Header() {
   const stuck = useScrolledPast(24)
