@@ -1,11 +1,19 @@
 import { motion } from 'framer-motion'
 import { scrollToBooking } from '../../callStore'
+import Icon from '../Icon'
 import HeroVisual from './HeroVisual'
 import CTAButtons from './CTAButtons'
 import { EYEBROW, HEADLINE, LEDE, SUBHEAD } from './heroContent'
 import './hero.css'
 
 const ease = [0.22, 1, 0.36, 1]
+
+const STRIP = [
+  { icon: 'Microscope', label: 'Scalp Analysis', copy: 'Find the root cause' },
+  { icon: 'TestTubes', label: 'GFC Therapy', copy: 'Your own growth factors' },
+  { icon: 'Sprout', label: 'Hair Transplant', copy: 'Natural, lasting density' },
+  { icon: 'MapPin', label: 'Kovilpatti', copy: 'Nellai Bypass Road' },
+]
 
 export default function Hero() {
   /* No scroll-linked motion here. The words each animate in once on load and
@@ -15,6 +23,8 @@ export default function Hero() {
       {/* The hero's picture is the before/after frame in the second column —
           there is no full-bleed artwork behind it, just the dark ground and
           two blurred gold blooms drawn in CSS. */}
+      <HeroVisual />
+
       <div className="hero__grid">
         {/* Copy sits in the white space the artwork already reserves. */}
         <div className="hero__copy">
@@ -81,15 +91,26 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        <motion.div
-          className="hero__showcase"
-          initial={{ opacity: 0, x: 38 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.9, delay: 0.3, ease }}
-        >
-          <HeroVisual />
-        </motion.div>
       </div>
+
+      <motion.ul
+        className="hero__strip"
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.9, ease }}
+      >
+        {STRIP.map((item) => (
+          <li key={item.label}>
+            <span className="hero__strip-ic">
+              <Icon name={item.icon} size={20} />
+            </span>
+            <span>
+              <strong>{item.label}</strong>
+              <small>{item.copy}</small>
+            </span>
+          </li>
+        ))}
+      </motion.ul>
     </section>
   )
 }
