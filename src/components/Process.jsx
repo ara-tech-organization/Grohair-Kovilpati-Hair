@@ -47,8 +47,8 @@ export default function Process() {
 
   return (
     <section className="section proc" id="process" ref={ref}>
-      <div className="shell">
-        <div className="proc__head reveal">
+      <div className="shell proc__layout">
+        <div className="proc__intro reveal">
           <span className="eyebrow">
             <Icon name="Sparkles" size={13} />
             How We Work
@@ -57,41 +57,40 @@ export default function Process() {
             From first scan to <span className="gold-text">visible regrowth</span>
           </h2>
           <p>Four clear steps, explained at every stage — no generic packages.</p>
-        </div>
 
-        <ol className="proc__steps">
-          {STEPS.map((step, i) => (
-            <li key={step.title} className="proc__step reveal" style={{ '--delay': `${i * 90}ms` }}>
-              <span className="proc__num" aria-hidden="true">
-                {String(i + 1).padStart(2, '0')}
-              </span>
-              <span className="proc__ic">
-                <Icon name={step.icon} size={22} />
-              </span>
-              <h3>{step.title}</h3>
-              <p>{step.copy}</p>
-            </li>
-          ))}
-        </ol>
-
-        <div className="proc__aside reveal">
           <div className="proc__compare" role="img" aria-label="Illustration of hair density before and after treatment">
             <Density label="Thinning" keep={4} tone="before" />
             <span className="proc__arrow" aria-hidden="true">
-              <Icon name="ArrowRight" size={22} />
+              <Icon name="ArrowRight" size={20} />
             </span>
             <Density label="Fuller density" keep={9} tone="after" />
           </div>
+          <small className="proc__note">Illustration only — your plan and timeline are set after your examination.</small>
 
-          <div className="proc__cta">
-            <h3>Start with a scalp consultation</h3>
-            <p>Illustration only — your own plan and timeline are set after your examination.</p>
-            <button type="button" className="btn btn--gold" onClick={scrollToBooking}>
-              Book a Consultation
-              <Icon name="ArrowRight" size={17} />
-            </button>
-          </div>
+          <button type="button" className="btn btn--gold proc__book" onClick={scrollToBooking}>
+            Book a Consultation
+            <Icon name="ArrowRight" size={17} />
+          </button>
         </div>
+
+        <ol className="proc__timeline">
+          {STEPS.map((step, i) => (
+            <li key={step.title} className="proc__item reveal" style={{ '--delay': `${i * 90}ms` }}>
+              <span className="proc__num" aria-hidden="true">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <div className="proc__card">
+                <span className="proc__ic">
+                  <Icon name={step.icon} size={20} />
+                </span>
+                <div>
+                  <h3>{step.title}</h3>
+                  <p>{step.copy}</p>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   )
