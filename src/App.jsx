@@ -14,12 +14,13 @@ import usePrefersReducedMotion from './hooks/usePrefersReducedMotion'
 import useSmoothScroll, { useCleanAnchors } from './hooks/useSmoothScroll'
 import { HOME, sectionPath } from './basePath'
 import './App.css'
+import './theme.css'
 
 /* Everything from About down is below the fold on every viewport, so it ships
    as its own chunk and downloads on approach. The hero, the booking form and
    the trust bar stay eager — they are the first screen and the first scroll. */
 const About = lazy(() => import('./components/About'))
-const Results = lazy(() => import('./components/Results'))
+const Process = lazy(() => import('./components/Process'))
 const Services = lazy(() => import('./components/Services'))
 const WhyUs = lazy(() => import('./components/WhyUs'))
 const Reviews = lazy(() => import('./components/Reviews'))
@@ -81,8 +82,8 @@ export default function App() {
           <About />
         </LazySection>
 
-        <LazySection anchorId="results" minHeight={720}>
-          <Results />
+        <LazySection anchorId="process" minHeight={720}>
+          <Process />
         </LazySection>
 
         <LazySection anchorId="treatments" minHeight={760}>

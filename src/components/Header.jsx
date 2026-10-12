@@ -13,7 +13,7 @@ import Icon from './Icon'
 const NAV = [
   { label: 'Home', href: '#top' },
   { label: 'About', href: '#about' },
-  { label: 'Results', href: '#results' },
+  { label: 'Process', href: '#process' },
   { label: 'Treatments', href: '#treatments' },
   { label: 'Reviews', href: '#reviews' },
   { label: 'FAQ', href: '#faq' },

@@ -1,9 +1,3 @@
-import result1 from './assets/result-1-crown-density.jpeg'
-import result2 from './assets/result-2-hairline-regrowth.png'
-import result3 from './assets/result-3-hairline-rebuilt.png'
-import result4 from './assets/result-4-thinning-crown.jpeg'
-import result5 from './assets/result-5-crown-regrowth.jpeg'
-import result6 from './assets/result-6-parting-corrected.jpeg'
 
 export const CLINIC = {
   name: 'AdGro Hair and GloSkin Kovilpatti',
@@ -120,15 +114,6 @@ export const WHY_US = [
     title: '4.8★ Rated Clinic',
     copy: 'Trusted by patients across Kovilpatti and nearby towns.',
   },
-]
-
-export const RESULTS = [
-  { src: result1, caption: 'Crown density restored', treatment: 'Hair Fall Treatment' },
-  { src: result2, caption: 'Hairline and mid-scalp regrowth', treatment: 'Hair GFC Therapy' },
-  { src: result3, caption: 'Receding hairline rebuilt', treatment: 'Hair Transplant' },
-  { src: result4, caption: 'Thinning crown filled in', treatment: 'GFC Therapy' },
-  { src: result5, caption: 'Visible density at the crown', treatment: 'Hair Fall Treatment' },
-  { src: result6, caption: 'Widening parting corrected', treatment: 'Mesotherapy' },
 ]
 
 export const REVIEWS = [

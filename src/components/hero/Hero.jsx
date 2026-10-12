@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { scrollToBooking } from '../../callStore'
-import BeforeAfter from './BeforeAfter'
+import HeroVisual from './HeroVisual'
 import CTAButtons from './CTAButtons'
 import { EYEBROW, HEADLINE, LEDE, SUBHEAD } from './heroContent'
 import './hero.css'
@@ -87,7 +87,7 @@ export default function Hero() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9, delay: 0.3, ease }}
         >
-          <BeforeAfter />
+          <HeroVisual />
         </motion.div>
       </div>
     </section>

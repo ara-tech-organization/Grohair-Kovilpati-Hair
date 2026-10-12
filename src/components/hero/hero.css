@@ -357,121 +357,26 @@
 
 /* Fills its column rather than sitting inside it at a fixed width — the column
    is already sized to the frame, so any cap here would only reopen the gap. */
-.ba {
-  position: relative;
-  width: 100%;
-}
 
 /* Warm bloom under the stack, so the frame sits in light rather than on a
    flat field. Sized past the print and blurred beyond its own edges. */
-.ba::before {
-  content: '';
-  position: absolute;
-  inset: 6% -12% -8%;
-  border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(237, 34, 41, 0.4), transparent 72%);
-  filter: blur(38px);
-  z-index: 0;
-  pointer-events: none;
-}
 
 /* Two frames fanned behind the print. Rotation only — no content — so they
    cost nothing and read as the rest of the case files underneath. Barely
    there: at the light theme's 55% white they read as bright slabs on this
    ground rather than as paper stacked under the print. */
-.ba__ghost {
-  position: absolute;
-  border-radius: 22px;
-  background: rgba(255, 248, 248, 0.05);
-  box-shadow: inset 0 0 0 1px rgba(242, 87, 92, 0.2);
-  pointer-events: none;
-}
 
-.ba__ghost--1 {
-  inset: 12px -8px -8px 11px;
-  transform: rotate(1.6deg);
-  z-index: 1;
-}
 
-.ba__ghost--2 {
-  inset: 24px -15px -15px 22px;
-  transform: rotate(3.2deg);
-  z-index: 0;
-}
 
-.ba__frame {
-  position: relative;
-  z-index: 2;
-  aspect-ratio: 4 / 5;
-  /* Explicit, so the ratio always has a definite width to resolve against —
-     the frame carries no intrinsic size of its own. */
-  width: 100%;
-  border-radius: 20px;
-  overflow: hidden;
-  isolation: isolate;
-  background: linear-gradient(170deg, var(--paper), #fbefef);
-  box-shadow:
-    inset 0 0 0 1.5px rgba(242, 87, 92, 0.5),
-    0 2px 4px rgba(0, 0, 0, 0.3),
-    0 40px 90px -34px rgba(0, 0, 0, 0.7);
-}
 
 /* `contain`, not `cover` — each source is a before/after collage, and a crop
    would cut into the comparison itself. */
-.ba__shot {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  opacity: 0;
-  transform: scale(1.04);
-  transition:
-    opacity 0.85s var(--ease-soft),
-    transform 1.5s var(--ease);
-}
 
-.ba__shot.is-on {
-  opacity: 1;
-  transform: none;
-}
 
-.ba__stamp {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  z-index: 3;
-  padding: 6px 12px;
-  border-radius: var(--r-full);
-  background: rgba(255, 255, 255, 0.76);
-  backdrop-filter: blur(10px) saturate(160%);
-  -webkit-backdrop-filter: blur(10px) saturate(160%);
-  box-shadow: inset 0 0 0 1px rgba(201, 128, 131, 0.45);
-  font-size: 0.58rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--champ-800);
-}
 
-.ba__stamp i {
-  margin-inline: 3px;
-  font-style: normal;
-  color: var(--gold-600);
-}
 
 /* Gold line that travels down the print once on every change of case — the
    detail that makes the swap read as a reveal rather than a slideshow. */
-.ba__scan {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 2px;
-  z-index: 4;
-  background: linear-gradient(90deg, transparent, rgba(215, 25, 32, 0.85), transparent);
-  animation: ba-scan 1.5s var(--ease-soft) 1;
-  pointer-events: none;
-}
 
 @keyframes ba-scan {
   from {
@@ -491,77 +396,14 @@
 }
 
 /* Grounds the caption without tinting the photograph above it. */
-.ba__vignette {
-  position: absolute;
-  inset: auto 0 0;
-  height: 34%;
-  z-index: 3;
-  background: linear-gradient(to top, rgba(28, 17, 18, 0.5), transparent);
-  pointer-events: none;
-}
 
-.ba__caption {
-  position: absolute;
-  left: 14px;
-  right: 14px;
-  bottom: 12px;
-  z-index: 4;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.76rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: #fffaf0;
-  text-shadow: 0 1px 10px rgba(28, 17, 18, 0.5);
-}
 
-.ba__dot {
-  flex: none;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--gold-400);
-}
 
 /* Corner brackets, set outside the frame. A mount, not a viewfinder. */
-.ba__edge {
-  position: absolute;
-  z-index: 3;
-  width: 22px;
-  height: 22px;
-  border: 2px solid var(--gold-500);
-  border-radius: 3px;
-  pointer-events: none;
-}
 
-.ba__edge--tl {
-  top: -6px;
-  left: -6px;
-  border-right: 0;
-  border-bottom: 0;
-}
 
-.ba__edge--tr {
-  top: -6px;
-  right: -6px;
-  border-left: 0;
-  border-bottom: 0;
-}
 
-.ba__edge--br {
-  right: -6px;
-  bottom: -6px;
-  border-left: 0;
-  border-top: 0;
-}
 
-.ba__edge--bl {
-  bottom: -6px;
-  left: -6px;
-  border-right: 0;
-  border-top: 0;
-}
 
 /* ==========================================================================
    RESPONSIVE — a distinct mobile composition, not a squeezed desktop
@@ -601,9 +443,6 @@
     justify-content: center;
   }
 
-  .ba {
-    width: min(100%, 380px);
-  }
 }
 
 /* The sticky action bar is on screen from the first frame at this width, so
@@ -639,9 +478,6 @@
 
   /* The ghost frames fan outward; at the narrowest widths that overhang is
      what would push the section into a horizontal scroll. */
-  .ba {
-    width: min(100%, 300px);
-  }
 }
 
 /* ==========================================================================
@@ -655,9 +491,5 @@
 
   /* The showcase stops cycling in JS; this stops the fade with it, so the
      first case simply sits there. */
-  .ba__shot {
-    transition: none;
-    transform: none;
-  }
 
 }
