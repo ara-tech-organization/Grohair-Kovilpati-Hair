@@ -43,7 +43,7 @@
   # `consultation` is the booking section. The DOM id is `book` and the slug is
   # mapped in src/basePath.js; `book` stays listed because it is a URL the app
   # used to write and old shared links still resolve to the same section.
-  RewriteRule ^(top|about|process|treatments|reviews|faq|consultation|book|thank-you)/?$ /hair/index.html [L]
+  RewriteRule ^(top|about|results|process|treatments|reviews|faq|consultation|book|thank-you)/?$ /hair/index.html [L]
 </IfModule>
 
 # Everything else. Without this Apache answers with its own bare error page.

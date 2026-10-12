@@ -20,6 +20,7 @@ import './theme.css'
    as its own chunk and downloads on approach. The hero, the booking form and
    the trust bar stay eager — they are the first screen and the first scroll. */
 const About = lazy(() => import('./components/About'))
+const Results = lazy(() => import('./components/Results'))
 const Process = lazy(() => import('./components/Process'))
 const Services = lazy(() => import('./components/Services'))
 const WhyUs = lazy(() => import('./components/WhyUs'))
@@ -80,6 +81,10 @@ export default function App() {
 
         <LazySection anchorId="about" minHeight={620}>
           <About />
+        </LazySection>
+
+        <LazySection anchorId="results" minHeight={720}>
+          <Results />
         </LazySection>
 
         <LazySection anchorId="process" minHeight={720}>

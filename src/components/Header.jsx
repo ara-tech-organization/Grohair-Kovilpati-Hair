@@ -13,18 +13,11 @@ import Icon from './Icon'
 const NAV = [
   { label: 'Home', href: '#top' },
   { label: 'About', href: '#about' },
-  { label: 'Process', href: '#process' },
+  { label: 'Results', href: '#results' },
   { label: 'Treatments', href: '#treatments' },
   { label: 'Reviews', href: '#reviews' },
   { label: 'FAQ', href: '#faq' },
 ]
-
-/* Derived, not restated — the scroll-spy needs exactly these ids in exactly
-   this order, and a second hand-written list is a second thing to get wrong.
-   Home is left out: the hero is where the page starts rather than a section
-   you arrive at, and including it would light Home up again every time the
-   spy found nothing else in view. */
-const SECTION_IDS = NAV.filter((item) => item.href !== '#top').map((item) => item.href.slice(1))
 
 /* What the spy watches, which is not the same as what the menu lists.
    Booking sits between the hero and About and has no menu item of its own, but
@@ -36,7 +29,8 @@ const SECTION_IDS = NAV.filter((item) => item.href !== '#top').map((item) => ite
    Page order, not menu order. `resolve` keeps the last id whose top has passed
    the offset, so the list has to read top to bottom, and Booking is above
    About. */
-const SPY_IDS = ['book', ...SECTION_IDS]
+/* Process has a section but no menu item, so it is listed here by hand. */
+const SPY_IDS = ['book', 'about', 'results', 'process', 'treatments', 'reviews', 'faq']
 
 export default function Header() {
   const stuck = useScrolledPast(24)
