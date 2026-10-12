@@ -62,7 +62,7 @@ const SOURCE_LABEL = {
 /**
  * Maps the form's answers onto the handler's payload.
  *
- * One key per question, and nothing else. `email`, `time`, `treatment` and
+ * One key per question, and nothing else (no `branch` — there is one clinic). `email`, `time`, `treatment` and
  * `message` are gone: the form asks for a phone rather than an email, because
  * the page promises a callback; the Morning/Afternoon/Evening choice became a
  * date picker; and treatment was never asked. Sending them as empty strings
@@ -77,7 +77,6 @@ function toApiPayload(lead) {
     name: lead.name ?? '',
     phone: lead.phone ?? '',
     city: lead.city ?? '',
-    branch: lead.branch ?? '',
     date: lead.date ?? '',
     source: SOURCE_LABEL[lead.source] ?? lead.source ?? 'Website Form',
   }
