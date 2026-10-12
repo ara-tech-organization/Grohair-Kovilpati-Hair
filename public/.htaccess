@@ -1,14 +1,14 @@
 # Single-page app on Apache (Hostinger).
 #
 # This file ships in public/, so the build copies it to dist/.htaccess and it
-# lands at public_html/.htaccess — the document root of
-# adgrohairgloskinkovilpatti.com. It must stay in step with `base` in
-# vite.config.js ('/'). Built with one root and served from another, the
+# lands at public_html/hair/.htaccess — inside the app's folder, not beside it.
+# Everything absolute below therefore carries /hair/, and must stay in step with
+# `base` in vite.config.js. Built with one root and served from another, the
 # rewrite points at an index.html that is not there and the page comes back
 # blank.
 #
-# The nav writes real paths into the address bar — /treatments, /about,
-#  /reviews, /faq, /thank-you — but only index.html
+# The nav writes real paths into the address bar — /hair/treatments, /hair/about,
+# /hair /hair/reviews, /hair/faq, /hair/thank-you — but only index.html
 # exists on disk. That is fine while the visitor stays in the tab, because those
 # paths are pushed by history.pushState and never requested from the server. The
 # moment someone refreshes, opens one in a new tab, or follows a shared link,
@@ -22,7 +22,7 @@
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  RewriteBase /
+  RewriteBase /hair/
 
   # Anything that exists on disk wins — assets and images are served directly.
   RewriteCond %{REQUEST_FILENAME} -f [OR]
@@ -31,11 +31,11 @@
 
   # The section ids the nav writes with pushState (see useCleanAnchors), plus
   # the path the lead form pushes on success. The pattern is matched after
-  # Apache strips the / prefix, which is what RewriteBase declares.
+  # Apache strips the /hair/ prefix, which is what RewriteBase declares.
   #
   # The list is exhaustive on purpose. A blanket `RewriteRule . index.html`
-  # answers *every* URL with the homepage — /skin, /no,
-  # /anything-at-all all returned the full site with a 200, which means a
+  # answers *every* URL with the homepage — /hair/skin, /hair/no,
+  # /hair/anything-at-all all returned the full site with a 200, which means a
   # typo looks like a real page, and search engines index unlimited duplicate
   # URLs. Anything not named here now falls through to Apache, which finds no
   # file and serves 404.html with a real 404 status. Add a path here only when
@@ -43,13 +43,13 @@
   # `consultation` is the booking section. The DOM id is `book` and the slug is
   # mapped in src/basePath.js; `book` stays listed because it is a URL the app
   # used to write and old shared links still resolve to the same section.
-  RewriteRule ^(top|about|results|treatments|reviews|faq|consultation|book|thank-you)/?$ /index.html [L]
+  RewriteRule ^(top|about|results|treatments|reviews|faq|consultation|book|thank-you)/?$ /hair/index.html [L]
 </IfModule>
 
 # Everything else. Without this Apache answers with its own bare error page.
 # The path is resolved from the document root, not from this folder, so the
-# the leading / is required.
-ErrorDocument 404 /404.html
+# /hair/ is required.
+ErrorDocument 404 /hair/404.html
 
 <IfModule mod_headers.c>
   # Vite fingerprints every built asset — index-i5WabP6x.js, Logo-iGWrOEx3.png.
