@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import { scrollToBooking } from '../../callStore'
 import Icon from '../Icon'
-import HeroVisual from './HeroVisual'
 import CTAButtons from './CTAButtons'
 import { EYEBROW, HEADLINE, LEDE, SUBHEAD } from './heroContent'
 import './hero.css'
@@ -23,8 +22,6 @@ export default function Hero() {
       {/* The hero's picture is the before/after frame in the second column —
           there is no full-bleed artwork behind it, just the dark ground and
           two blurred gold blooms drawn in CSS. */}
-      <HeroVisual />
-
       <div className="hero__grid">
         {/* Copy sits in the white space the artwork already reserves. */}
         <div className="hero__copy">
