@@ -15,6 +15,8 @@ export default defineConfig({
 
      This has to stay in step with public/.htaccess, which rewrites unknown
      paths to index.html and must use the same folder. */
-  base: '/hair/',
+  /* GitHub Pages builds set VITE_BASE=/Grohair-Kovilpati-Hair/ (see
+     .github/workflows/deploy.yml); the cPanel upload keeps '/hair/'. */
+  base: process.env.VITE_BASE || '/hair/',
   plugins: [react()],
 })

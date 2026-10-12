@@ -29,6 +29,10 @@ jobs:
       # sharp's Linux-only optional deps, which makes `npm ci` bail.
       - run: npm install --no-audit --no-fund
       - run: npm run build
+        env:
+          VITE_BASE: /Grohair-Kovilpati-Hair/
+      # The 404 page is static, so point its home link at the Pages folder too.
+      - run: sed -i 's#href="/hair/"#href="/Grohair-Kovilpati-Hair/"#' dist/404.html
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
