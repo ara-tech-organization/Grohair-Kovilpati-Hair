@@ -11,10 +11,10 @@ export default function WhyUs() {
         <div className="section-head reveal">
           <span className="eyebrow">
             <Icon name="BadgeCheck" size={13} />
-            Why Chennai Trusts Us
+            Why Kovilpatti Trusts Us
           </span>
           <h2>
-            Why Chennai Trusts <span className="gold-text">Bonitaa</span>
+            Why Kovilpatti Trusts <span className="gold-text">AdGro</span>
           </h2>
           <div className="rule" />
         </div>

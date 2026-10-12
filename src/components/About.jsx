@@ -1,4 +1,4 @@
-import logo from '../assets/Logo.png'
+import logo from '../assets/logo-trim.png'
 import { scrollToBooking } from '../callStore'
 import { useReveal } from '../hooks'
 import Icon from './Icon'
@@ -23,7 +23,7 @@ export default function About() {
       <div className="shell about__inner">
         <div className="about__media reveal">
           <div className="about__panel">
-            <img className="about__panel-mark" src={logo} alt="" width="150" height="37" loading="lazy" />
+            <img className="about__panel-mark" src={logo} alt="" width="113" height="58" loading="lazy" />
 
             <h3 className="about__panel-title">What your first consultation includes</h3>
 
@@ -57,11 +57,11 @@ export default function About() {
         <div className="about__copy">
           <span className="eyebrow reveal">
             <Icon name="Sparkles" size={13} />
-            About Our Chennai Clinic
+            About Our Kovilpatti Clinic
           </span>
 
           <h2 className="reveal" style={{ '--delay': '60ms' }}>
-            Expert Hair Care, <span className="gold-text">Rooted in Chennai</span>
+            Expert Hair Care, <span className="gold-text">Rooted in Kovilpatti</span>
           </h2>
 
           <p className="about__sub reveal" style={{ '--delay': '110ms' }}>
@@ -69,14 +69,14 @@ export default function About() {
           </p>
 
           <p className="reveal" style={{ '--delay': '160ms' }}>
-            Every treatment at our Chennai clinic starts with a proper scalp and hair analysis — not a
+            Every treatment at our Kovilpatti clinic starts with a proper scalp and hair analysis — not a
             one-size-fits-all fix. Our certified trichologists study the root cause behind your hair
             fall, thinning, or baldness, then build a plan around it using FDA-approved treatments and
             modern hair restoration technology.
           </p>
 
           <p className="reveal" style={{ '--delay': '200ms' }}>
-            Backed by a network of clinics across Tamil Nadu, our approach hasn&apos;t changed in 15
+            Our approach hasn&apos;t changed in 15
             years: <strong className="about__em">treat the cause, not just the symptom.</strong>
           </p>
 

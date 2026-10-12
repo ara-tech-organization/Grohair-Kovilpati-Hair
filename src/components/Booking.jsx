@@ -21,7 +21,7 @@ export default function Booking({ onSubmitted }) {
             Appointments
           </span>
           <h2>
-            Book a Consultation in <span className="gold-text">Chennai</span>
+            Book a Consultation in <span className="gold-text">Kovilpatti</span>
           </h2>
           <p className="booking__sub">
             Tell us where you&apos;d like to be seen — our team will call you back within 30 minutes.

@@ -59,12 +59,29 @@ export function useScrolledPast(offset = 20) {
 }
 
 /**
- * Scroll-spy for the nav. Returns the id of the section currently under the
- * header. Picks the last section whose top has passed the header line rather
- * than using raw intersection ratios — tall and short sections then behave the
- * same, and the last section still activates at the bottom of the page.
+ * Scroll-spy for the nav. Returns the id of the section currently in view.
+ * Picks the last section whose top has passed a reading line rather than using
+ * raw intersection ratios — tall and short sections then behave the same, and
+ * the last section still activates at the bottom of the page.
+ *
+ * The line is a fraction of the viewport, not a fixed pixel count, and that is
+ * the whole point. It used to sit at 120px, barely below the 84px header, which
+ * left about 25px of slack — and a jump to a section has to be accurate to
+ * within that 25px or the loop keeps the *previous* section. It routinely was
+ * not: every section below the fold mounts lazily, so a long jump passes two or
+ * three placeholders that swap to real content and change height while the
+ * animation is still running. scrollToSection re-aims for exactly this reason,
+ * but it settles within a couple of hundred pixels, not twenty-five. Clicking
+ * Reviews landed just short of #reviews and the nav lit up Treatments.
+ *
+ * At 40% the line sits near the middle of the screen, so whichever section is
+ * actually filling the view is the one that has passed it, and a jump that
+ * lands a couple of hundred pixels off still resolves to what the visitor is
+ * looking at. It is also the answer while free-scrolling: a section becomes
+ * current once its top reaches the middle, which is about when it takes over
+ * the screen.
  */
-export function useActiveSection(ids, offset = 120) {
+export function useActiveSection(ids, lineRatio = 0.4) {
   const [active, setActive] = useState('')
 
   useEffect(() => {
@@ -74,10 +91,12 @@ export function useActiveSection(ids, offset = 120) {
       const atBottom =
         window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2
 
+      const line = window.innerHeight * lineRatio
+
       let current = ''
       for (const id of ids) {
         const el = document.getElementById(id)
-        if (el && el.getBoundingClientRect().top <= offset) current = id
+        if (el && el.getBoundingClientRect().top <= line) current = id
       }
 
       setActive(atBottom ? ids[ids.length - 1] : current)
@@ -96,7 +115,7 @@ export function useActiveSection(ids, offset = 120) {
       window.removeEventListener('resize', onScroll)
       cancelAnimationFrame(frame)
     }
-  }, [ids, offset])
+  }, [ids, lineRatio])
 
   return active
 }

@@ -26,7 +26,7 @@ export default function Reviews() {
           </span>
 
           <h2>
-            What Our <span className="gold-text">Chennai Patients</span> Say
+            What Our <span className="gold-text">Kovilpatti Patients</span> Say
           </h2>
 
           <div className="score">
@@ -38,7 +38,7 @@ export default function Reviews() {
           </div>
 
           <p className="reviews__intro">
-            Unedited reviews from patients treated at Bonitaa Skin and Hair Care.
+            Unedited reviews from patients treated at our clinic.
           </p>
 
           <button type="button" className="btn btn--gold" onClick={scrollToBooking}>

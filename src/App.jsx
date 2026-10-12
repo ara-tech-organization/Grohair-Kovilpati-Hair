@@ -12,6 +12,7 @@ import ActionBar from './components/ActionBar'
 import TrustBar from './components/TrustBar'
 import usePrefersReducedMotion from './hooks/usePrefersReducedMotion'
 import useSmoothScroll, { useCleanAnchors } from './hooks/useSmoothScroll'
+import { HOME, sectionPath } from './basePath'
 import './App.css'
 
 /* Everything from About down is below the fold on every viewport, so it ships
@@ -27,8 +28,12 @@ const Footer = lazy(() => import('./components/Footer'))
 
 /* Pushed on submit so analytics has a URL for the conversion, and popped when
    the visitor leaves the confirmation. Nothing is served at this path — it is
-   a history entry over the landing page, not a document. */
-const THANK_YOU_PATH = '/thank-you'
+   a history entry over the landing page, not a document.
+
+   Carries the app's folder ('/hair/thank-you'): a bare '/thank-you' would point
+   outside it, so a visitor who reloads the confirmation — or a GTM trigger
+   matching on the path — would be looking at a URL the server cannot serve. */
+const THANK_YOU_PATH = sectionPath('thank-you')
 
 export default function App() {
   const reduced = usePrefersReducedMotion()
@@ -52,7 +57,7 @@ export default function App() {
   const hideThanks = () => {
     setThanked(false)
     if (window.location.pathname === THANK_YOU_PATH) {
-      window.history.pushState({}, '', '/')
+      window.history.pushState({}, '', HOME)
     }
   }
 

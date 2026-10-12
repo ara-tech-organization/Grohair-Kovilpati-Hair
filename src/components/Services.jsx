@@ -15,7 +15,7 @@ export default function Services() {
             Our Treatments
           </span>
           <h2>
-            Hair Treatments We Offer in <span className="gold-text">Chennai</span>
+            Hair Treatments We Offer in <span className="gold-text">Kovilpatti</span>
           </h2>
           <p>Six proven solutions, matched to your specific hair concern.</p>
           <div className="rule" />

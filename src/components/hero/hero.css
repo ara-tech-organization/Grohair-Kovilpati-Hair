@@ -15,12 +15,12 @@
 
   /* Warm near-black, deliberately not navy — it is --ink taken darker, so the
      hero reads as the same brand at low key rather than a different one. */
-  --hero-bg: #14100a;
-  --hero-lift: #241c10;
-  --hero-ink: #fdf8ee;
-  --hero-soft: rgba(253, 248, 238, 0.74);
-  --hero-muted: rgba(253, 248, 238, 0.48);
-  --hero-line: rgba(229, 197, 88, 0.28);
+  --hero-bg: #1a0a0b;
+  --hero-lift: #2b1011;
+  --hero-ink: #fff8f8;
+  --hero-soft: rgba(255, 248, 248, 0.74);
+  --hero-muted: rgba(255, 248, 248, 0.48);
+  --hero-line: rgba(242, 87, 92, 0.28);
   /* The print in the frame stays paper — it is a photograph, not chrome. */
   --paper: #fefefe;
 
@@ -32,7 +32,7 @@
   overflow: hidden;
   isolation: isolate;
   color: var(--hero-ink);
-  background: linear-gradient(158deg, var(--hero-lift) 0%, var(--hero-bg) 46%, #0d0a06 100%);
+  background: linear-gradient(158deg, var(--hero-lift) 0%, var(--hero-bg) 46%, #0f0506 100%);
   /* Top clears the 84px fixed header. */
   padding-block: clamp(116px, 13vh, 168px) clamp(76px, 11vh, 124px);
 }
@@ -54,7 +54,7 @@
   height: clamp(300px, 38vw, 560px);
   top: -14%;
   left: -6%;
-  background: radial-gradient(circle, rgba(216, 174, 54, 0.3) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(237, 34, 41, 0.3) 0%, transparent 70%);
 }
 
 .hero::after {
@@ -62,7 +62,7 @@
   height: clamp(220px, 30vw, 440px);
   right: -5%;
   bottom: -12%;
-  background: radial-gradient(circle, rgba(201, 168, 120, 0.22) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(201, 128, 131, 0.22) 0%, transparent 70%);
 }
 
 /* ==========================================================================
@@ -183,7 +183,7 @@
   border-radius: var(--r-full);
   /* A lift off the ground rather than a tint over it — glass that brightens
      is what reads as raised on a dark surface. */
-  background: rgba(253, 248, 238, 0.05);
+  background: rgba(255, 248, 248, 0.05);
   backdrop-filter: blur(10px) saturate(150%);
   -webkit-backdrop-filter: blur(10px) saturate(150%);
   box-shadow: inset 0 0 0 1px var(--hero-line);
@@ -205,7 +205,7 @@
 
 .hero__sub-item:hover {
   transform: translateY(-2px);
-  box-shadow: inset 0 0 0 1px rgba(229, 197, 88, 0.7);
+  box-shadow: inset 0 0 0 1px rgba(242, 87, 92, 0.7);
 }
 
 .hero__lede {
@@ -280,7 +280,7 @@
   color: var(--cta-ink);
   background: var(--grad-cta);
   background-size: 200% 100%;
-  box-shadow: 0 16px 38px -16px rgba(139, 101, 20, 0.6);
+  box-shadow: 0 16px 38px -16px rgba(143, 20, 27, 0.6);
   transition:
     background-position 0.8s var(--ease),
     box-shadow 0.5s var(--ease);
@@ -288,7 +288,7 @@
 
 .mbtn--solid:hover {
   background-position: 100% 50%;
-  box-shadow: 0 22px 48px -16px rgba(139, 101, 20, 0.76);
+  box-shadow: 0 22px 48px -16px rgba(143, 20, 27, 0.76);
 }
 
 .mbtn--solid .mbtn__icon {
@@ -325,10 +325,10 @@
    here the secondary action is a gold rule around the dark surface itself. */
 .mbtn--glass {
   color: var(--gold-300);
-  background: rgba(253, 248, 238, 0.04);
+  background: rgba(255, 248, 248, 0.04);
   backdrop-filter: blur(14px) saturate(170%);
   -webkit-backdrop-filter: blur(14px) saturate(170%);
-  box-shadow: inset 0 0 0 1.5px rgba(229, 197, 88, 0.42);
+  box-shadow: inset 0 0 0 1.5px rgba(242, 87, 92, 0.42);
   transition:
     color 0.35s var(--ease-soft),
     background 0.4s var(--ease-soft),
@@ -337,8 +337,8 @@
 
 .mbtn--glass:hover {
   color: var(--gold-200);
-  background: rgba(253, 248, 238, 0.09);
-  box-shadow: inset 0 0 0 1.5px rgba(229, 197, 88, 0.85);
+  background: rgba(255, 248, 248, 0.09);
+  box-shadow: inset 0 0 0 1.5px rgba(242, 87, 92, 0.85);
 }
 
 /* ==========================================================================
@@ -369,7 +369,7 @@
   position: absolute;
   inset: 6% -12% -8%;
   border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(216, 174, 54, 0.4), transparent 72%);
+  background: radial-gradient(closest-side, rgba(237, 34, 41, 0.4), transparent 72%);
   filter: blur(38px);
   z-index: 0;
   pointer-events: none;
@@ -382,8 +382,8 @@
 .ba__ghost {
   position: absolute;
   border-radius: 22px;
-  background: rgba(253, 248, 238, 0.05);
-  box-shadow: inset 0 0 0 1px rgba(229, 197, 88, 0.2);
+  background: rgba(255, 248, 248, 0.05);
+  box-shadow: inset 0 0 0 1px rgba(242, 87, 92, 0.2);
   pointer-events: none;
 }
 
@@ -409,9 +409,9 @@
   border-radius: 20px;
   overflow: hidden;
   isolation: isolate;
-  background: linear-gradient(170deg, var(--paper), #f7f1e6);
+  background: linear-gradient(170deg, var(--paper), #fbefef);
   box-shadow:
-    inset 0 0 0 1.5px rgba(229, 197, 88, 0.5),
+    inset 0 0 0 1.5px rgba(242, 87, 92, 0.5),
     0 2px 4px rgba(0, 0, 0, 0.3),
     0 40px 90px -34px rgba(0, 0, 0, 0.7);
 }
@@ -446,7 +446,7 @@
   background: rgba(255, 255, 255, 0.76);
   backdrop-filter: blur(10px) saturate(160%);
   -webkit-backdrop-filter: blur(10px) saturate(160%);
-  box-shadow: inset 0 0 0 1px rgba(201, 168, 120, 0.45);
+  box-shadow: inset 0 0 0 1px rgba(201, 128, 131, 0.45);
   font-size: 0.58rem;
   font-weight: 600;
   letter-spacing: 0.16em;
@@ -468,7 +468,7 @@
   right: 0;
   height: 2px;
   z-index: 4;
-  background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.85), transparent);
+  background: linear-gradient(90deg, transparent, rgba(215, 25, 32, 0.85), transparent);
   animation: ba-scan 1.5s var(--ease-soft) 1;
   pointer-events: none;
 }
@@ -496,7 +496,7 @@
   inset: auto 0 0;
   height: 34%;
   z-index: 3;
-  background: linear-gradient(to top, rgba(23, 18, 8, 0.5), transparent);
+  background: linear-gradient(to top, rgba(28, 17, 18, 0.5), transparent);
   pointer-events: none;
 }
 
@@ -513,7 +513,7 @@
   font-weight: 600;
   letter-spacing: 0.02em;
   color: #fffaf0;
-  text-shadow: 0 1px 10px rgba(23, 18, 8, 0.5);
+  text-shadow: 0 1px 10px rgba(28, 17, 18, 0.5);
 }
 
 .ba__dot {

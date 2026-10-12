@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Section styles — Bonitaa Chennai landing page
+   Section styles — AdGro Hair and GloSkin Kovilpatti landing page
    ========================================================================== */
 
 /* Header and footer are chrome, not reading columns — they run wider than the
@@ -42,7 +42,7 @@
 .hdr.is-stuck {
   background: rgba(255, 255, 255, 0.95);
   border-bottom-color: var(--gold-200);
-  box-shadow: 0 4px 26px -14px rgba(23, 18, 8, 0.22);
+  box-shadow: 0 4px 26px -14px rgba(28, 17, 18, 0.22);
 }
 
 .hdr__inner {
@@ -61,7 +61,7 @@
   /* One height everywhere. It was a clamp plus a separate rule below 400px, so
      the wordmark grew and shrank across breakpoints and never quite matched
      the drawer or the footer. A logo is a fixed mark, not a fluid one. */
-  height: 38px;
+  height: 56px;
   width: auto;
   transition: transform 0.5s var(--ease);
 }
@@ -147,7 +147,7 @@
   transform: translateY(-1px);
   border-color: var(--gold-500);
   background: var(--gold-050);
-  box-shadow: 0 6px 18px -10px rgba(166, 124, 26, 0.5);
+  box-shadow: 0 6px 18px -10px rgba(184, 22, 30, 0.5);
 }
 
 .hdr__phone-ring {
@@ -188,6 +188,22 @@
   font-size: 0.89rem;
 }
 
+/* The booking section is the one place on the page with no menu item, so when
+   the visitor is at the form — or landed straight on /hair/consultation — this
+   button is the only thing in the header that can say where they are.
+
+   A ring rather than a new fill. The CTA is already the loudest element up
+   there and recolouring it would read as a different button; the white gap is
+   the header's own background, so the ring sits off the edge rather than
+   thickening it. */
+.hdr__cta.is-active,
+.drawer__cta.is-active {
+  box-shadow:
+    0 0 0 2px var(--white),
+    0 0 0 4px var(--gold-600),
+    var(--sh-gold);
+}
+
 .hdr__burger,
 .drawer {
   display: none;
@@ -199,7 +215,7 @@
   position: fixed;
   inset: 0;
   z-index: 95;
-  background: rgba(23, 18, 8, 0.34);
+  background: rgba(28, 17, 18, 0.34);
   backdrop-filter: blur(3px);
   opacity: 0;
   /* Hidden, not merely transparent: at opacity 0 the links stayed in the tab
@@ -245,7 +261,7 @@
 }
 
 .drawer__logo {
-  height: 38px;
+  height: 52px;
   width: auto;
 }
 
@@ -510,7 +526,7 @@
 .field__wrap:focus-within {
   border-color: var(--gold-500);
   background: var(--white);
-  box-shadow: 0 0 0 4px rgba(216, 174, 54, 0.14);
+  box-shadow: 0 0 0 4px rgba(237, 34, 41, 0.14);
 }
 
 .field__wrap:focus-within > svg:first-child {
@@ -588,7 +604,7 @@
 .pick.is-open .pick__trigger {
   border-color: var(--gold-500);
   background: var(--white);
-  box-shadow: 0 0 0 4px rgba(216, 174, 54, 0.14);
+  box-shadow: 0 0 0 4px rgba(237, 34, 41, 0.14);
 }
 
 .pick__trigger:focus-visible {
@@ -639,7 +655,7 @@
   background: var(--white);
   box-shadow:
     inset 0 0 0 1px var(--gold-200),
-    0 24px 50px -22px rgba(23, 18, 8, 0.34);
+    0 24px 50px -22px rgba(28, 17, 18, 0.34);
   opacity: 0;
   visibility: hidden;
   transform: translateY(-8px) scale(0.985);
@@ -729,7 +745,7 @@
 .badge.is-on {
   border-color: var(--gold-500);
   background: linear-gradient(120deg, var(--white), var(--gold-050) 60%, var(--gold-100));
-  box-shadow: 0 14px 30px -24px rgba(23, 18, 8, 0.5);
+  box-shadow: 0 14px 30px -24px rgba(28, 17, 18, 0.5);
   transform: translateY(-1px);
 }
 
@@ -759,7 +775,7 @@
   color: var(--cta-ink);
   background: var(--grad-cta);
   background-size: 200% 100%;
-  box-shadow: 0 4px 10px -4px rgba(166, 124, 26, 0.7);
+  box-shadow: 0 4px 10px -4px rgba(184, 22, 30, 0.7);
 }
 
 .badge__text {
@@ -931,7 +947,7 @@
   color: var(--cta-ink);
   background: var(--grad-cta);
   background-size: 200% 100%;
-  box-shadow: 0 6px 14px -7px rgba(166, 124, 26, 0.85);
+  box-shadow: 0 6px 14px -7px rgba(184, 22, 30, 0.85);
 }
 
 /* Wins over :hover and .is-outside — a chosen day stays chosen-looking even
@@ -1130,16 +1146,18 @@
   width: 260px;
   height: 260px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(216, 174, 54, 0.14), transparent 68%);
+  background: radial-gradient(circle, rgba(237, 34, 41, 0.14), transparent 68%);
   pointer-events: none;
 }
 
 .about__panel-mark {
   position: relative;
-  height: clamp(30px, 3.6vw, 37px);
+  height: clamp(46px, 5vw, 58px);
   width: auto;
   margin-bottom: 26px;
-  opacity: 0.95;
+  padding: 6px 12px;
+  border-radius: var(--r-sm);
+  background: var(--white);
 }
 
 .about__panel-title {
@@ -1175,7 +1193,7 @@
   border-radius: 50%;
   color: #fffdf7;
   background: linear-gradient(130deg, var(--gold-700), var(--gold-500));
-  box-shadow: 0 4px 10px -4px rgba(166, 124, 26, 0.6);
+  box-shadow: 0 4px 10px -4px rgba(184, 22, 30, 0.6);
 }
 
 .about__panel-note {
@@ -1331,7 +1349,7 @@
   background: linear-gradient(120deg, var(--white), var(--gold-050));
   box-shadow:
     inset 0 0 0 1px var(--gold-200),
-    0 18px 40px -30px rgba(23, 18, 8, 0.4);
+    0 18px 40px -30px rgba(28, 17, 18, 0.4);
 }
 
 .rr__seal-mark {
@@ -1389,7 +1407,7 @@
   position: absolute;
   inset: 8% -10% -6%;
   border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(201, 162, 39, 0.2), transparent 72%);
+  background: radial-gradient(closest-side, rgba(215, 25, 32, 0.2), transparent 72%);
   filter: blur(30px);
   z-index: 0;
   pointer-events: none;
@@ -1409,8 +1427,8 @@
   background: linear-gradient(170deg, var(--white), var(--gold-050));
   box-shadow:
     inset 0 0 0 1px var(--gold-200),
-    0 2px 4px rgba(23, 18, 8, 0.05),
-    0 42px 80px -44px rgba(23, 18, 8, 0.5);
+    0 2px 4px rgba(28, 17, 18, 0.05),
+    0 42px 80px -44px rgba(28, 17, 18, 0.5);
 }
 
 /* Every case stays mounted and stacked, so switching is a cross-fade with no
@@ -1446,7 +1464,7 @@
   background: rgba(255, 255, 255, 0.74);
   backdrop-filter: blur(10px) saturate(160%);
   -webkit-backdrop-filter: blur(10px) saturate(160%);
-  box-shadow: inset 0 0 0 1px rgba(201, 168, 120, 0.45);
+  box-shadow: inset 0 0 0 1px rgba(201, 128, 131, 0.45);
   font-size: 0.62rem;
   font-weight: 600;
   letter-spacing: 0.17em;
@@ -1612,7 +1630,7 @@
   background: linear-gradient(104deg, var(--white), var(--gold-050) 62%, var(--gold-100));
   box-shadow:
     inset 0 0 0 1px var(--gold-200),
-    0 22px 46px -34px rgba(23, 18, 8, 0.42);
+    0 22px 46px -34px rgba(28, 17, 18, 0.42);
 }
 
 .rr__row.is-on::before {
@@ -2040,7 +2058,7 @@
   width: 240px;
   height: 240px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(216, 174, 54, 0.16), transparent 68%);
+  background: radial-gradient(circle, rgba(237, 34, 41, 0.16), transparent 68%);
   opacity: 0;
   transform: scale(0.7);
   transition:
@@ -2235,7 +2253,7 @@
   font-weight: 600;
   color: #fffdf7;
   background: linear-gradient(130deg, var(--gold-700), var(--gold-500));
-  box-shadow: 0 6px 16px -8px rgba(166, 124, 26, 0.75);
+  box-shadow: 0 6px 16px -8px rgba(184, 22, 30, 0.75);
 }
 
 .rev__who {
@@ -2389,33 +2407,60 @@
    Footer-scoped tokens flip the whole block to light-on-dark in one place. */
 .ftr {
   --f-ink: #fffdf6;
-  --f-body: rgba(255, 249, 234, 0.78);
-  --f-muted: rgba(255, 249, 234, 0.55);
-  --f-line: rgba(255, 240, 205, 0.18);
+  --f-body: rgba(255, 246, 246, 0.78);
+  --f-muted: rgba(255, 246, 246, 0.55);
+  --f-line: rgba(255, 225, 225, 0.18);
   --f-accent: var(--gold-300);
 
   padding-top: clamp(42px, 4.8vw, 66px);
   padding-bottom: clamp(24px, 3.2vw, 36px);
-  background: linear-gradient(155deg, #6f4f10 0%, #8b6514 46%, #5b3f0c 100%);
+  background: linear-gradient(155deg, #6b0f14 0%, #8f141b 46%, #4d090d 100%);
   border-top: 1px solid var(--gold-600);
   color: var(--f-body);
 }
 
 .ftr__top {
   display: grid;
-  /* Middle column carries two addresses, so it gets the most room. */
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.62fr) minmax(0, 0.52fr);
+  /* One clinic, so the middle column no longer needs double width; the map
+     takes the room instead of leaving a gap before Quick Links. */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr) minmax(0, 0.55fr);
   gap: clamp(28px, 3.4vw, 48px);
   padding-bottom: clamp(26px, 3vw, 36px);
 }
 
-/* The wordmark is a gold gradient — on the bronze ground it reads as mud, so
-   it is knocked out to solid cream instead. */
+/* The logo is a PNG on a white plate, so on the red ground it sits on a white
+   card rather than being knocked out. */
 .ftr__brand img {
-  height: 44px;
+  height: 84px;
   width: auto;
   margin-bottom: 20px;
-  filter: brightness(0) invert(1);
+  padding: 8px 14px;
+  border-radius: var(--r-sm);
+  background: var(--white);
+}
+
+.ftr__social {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.ftr__social a {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 225, 225, 0.34);
+  color: var(--f-ink);
+  transition:
+    background 0.3s var(--ease-soft),
+    transform 0.3s var(--ease);
+}
+
+.ftr__social a:hover {
+  background: rgba(255, 246, 246, 0.16);
+  transform: translateY(-2px);
 }
 
 .ftr__brand p {
@@ -2443,8 +2488,8 @@
   gap: 9px;
   padding: 9px 18px;
   border-radius: var(--r-full);
-  border: 1px solid rgba(255, 240, 205, 0.2);
-  background: rgba(255, 249, 234, 0.05);
+  border: 1px solid rgba(255, 225, 225, 0.2);
+  background: rgba(255, 246, 246, 0.05);
   font-size: 0.9rem;
   font-weight: 500;
   color: var(--f-body);
@@ -2466,7 +2511,7 @@
 .ftr__mail:hover {
   transform: translateY(-1px);
   border-color: var(--gold-300);
-  background: rgba(255, 249, 234, 0.12);
+  background: rgba(255, 246, 246, 0.12);
   color: var(--f-ink);
 }
 
@@ -2481,8 +2526,8 @@
   margin-top: 22px;
   padding: 9px 18px;
   border-radius: var(--r-full);
-  border: 1px solid rgba(255, 240, 205, 0.34);
-  background: rgba(255, 249, 234, 0.08);
+  border: 1px solid rgba(255, 225, 225, 0.34);
+  background: rgba(255, 246, 246, 0.08);
   font-size: clamp(0.98rem, 1.5vw, 1.1rem);
   font-weight: 600;
   color: var(--f-ink);
@@ -2503,7 +2548,7 @@
 
 .ftr__phone:hover {
   transform: translateY(-2px);
-  background: rgba(255, 249, 234, 0.16);
+  background: rgba(255, 246, 246, 0.16);
   border-color: var(--gold-300);
 }
 
@@ -2524,7 +2569,7 @@
    comfortable measure. */
 .ftr__branch-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(218px, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 26px 24px;
 }
 
@@ -2562,13 +2607,13 @@
 /* Thumbnail map under each address — the only map on the page. */
 .ftr__branch-map {
   position: relative;
-  aspect-ratio: 16 / 10;
-  max-width: 280px;
-  margin-top: 14px;
+  aspect-ratio: 16 / 9;
+  max-width: 440px;
+  margin-top: 16px;
   overflow: hidden;
   border-radius: var(--r-sm);
   border: 1px solid var(--f-line);
-  background: rgba(255, 249, 234, 0.08);
+  background: rgba(255, 246, 246, 0.08);
 }
 
 .ftr__branch-map iframe {
@@ -2681,7 +2726,7 @@
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(14px);
   border-top: 1px solid var(--line);
-  box-shadow: 0 -8px 30px -14px rgba(23, 18, 8, 0.24);
+  box-shadow: 0 -8px 30px -14px rgba(28, 17, 18, 0.24);
 }
 
 /* Long labels must shrink rather than overflow — "Book an Appointment" is a
@@ -2734,7 +2779,7 @@
   align-items: start;
   justify-items: center;
   padding: 20px;
-  background: rgba(23, 18, 8, 0.5);
+  background: rgba(28, 17, 18, 0.5);
   backdrop-filter: blur(5px);
   animation: fade-in 0.3s var(--ease-soft) both;
   overflow-y: auto;
@@ -2902,7 +2947,7 @@
   padding: clamp(14px, 4vw, 28px);
   overflow-y: auto;
   overscroll-behavior: contain;
-  background: linear-gradient(168deg, var(--white) 0%, var(--cream) 58%, #fdf7ea 100%);
+  background: linear-gradient(168deg, var(--white) 0%, var(--cream) 58%, #fff6f6 100%);
   animation: fade-in 0.4s var(--ease-soft) both;
 }
 
@@ -2935,7 +2980,7 @@
   color: var(--cta-ink);
   background: var(--grad-cta);
   background-size: 200% 100%;
-  box-shadow: 0 14px 34px -12px rgba(166, 124, 26, 0.5);
+  box-shadow: 0 14px 34px -12px rgba(184, 22, 30, 0.5);
 }
 
 .ty__card h2 {
@@ -3680,6 +3725,10 @@
   .hdr.is-stuck .hdr__inner {
     height: 68px;
     gap: 10px;
+  }
+
+  .hdr__logo img {
+    height: 46px;
   }
 
   /* The hero owns its own spacing and breakpoints — see hero/hero.css. */

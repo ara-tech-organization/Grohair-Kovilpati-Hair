@@ -205,9 +205,9 @@ export default function Results() {
               Real Results
             </span>
             <h2>
-              Real Hair Transformations, <span className="gold-text">Real Chennai Patients</span>
+              Real Hair Transformations, <span className="gold-text">Real Kovilpatti Patients</span>
             </h2>
-            <p>Verified results from our Chennai clinic — not stock photos.</p>
+            <p>Verified results from our Kovilpatti clinic — not stock photos.</p>
           </div>
 
           <div className="rr__seal">
@@ -258,7 +258,7 @@ export default function Results() {
                       <img
                         className="rr__slide-img"
                         src={item.src}
-                        alt={`${item.caption} — ${item.treatment} result at our Chennai clinic`}
+                        alt={`${item.caption} — ${item.treatment} result at our Kovilpatti clinic`}
                         /* Only the first slide is on screen at rest; the others
                            arrive as the track is swiped. */
                         loading={i === 0 ? 'eager' : 'lazy'}
@@ -302,7 +302,7 @@ export default function Results() {
                       key={item.src}
                       className={`rr__shot${i === active ? ' is-on' : ''}`}
                       src={item.src}
-                      alt={`${item.caption} — ${item.treatment} result at our Chennai clinic`}
+                      alt={`${item.caption} — ${item.treatment} result at our Kovilpatti clinic`}
                       aria-hidden={i === active ? undefined : true}
                       loading="lazy"
                       decoding="async"

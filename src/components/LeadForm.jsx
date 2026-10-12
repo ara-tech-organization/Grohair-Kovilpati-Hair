@@ -11,7 +11,8 @@ import Icon from './Icon'
    `city` is free text and sits alongside `branch`, which they are not a
    substitute for: branch is which of the two clinics the patient will attend,
    city is where they are travelling from. Both variants collect it. */
-const EMPTY = { name: '', phone: '', city: '', branch: '', date: '' }
+const SINGLE_BRANCH = BRANCHES.length === 1
+const EMPTY = { name: '', phone: '', city: '', branch: SINGLE_BRANCH ? BRANCHES[0].name : '', date: '' }
 
 
 /**
@@ -151,7 +152,7 @@ export default function LeadForm({
             type="text"
             /* Shorter prompt in the popup — three example areas overflow the
                narrower field and truncate mid-word. */
-            placeholder={compact ? 'e.g. Velachery' : 'e.g. Velachery, Adyar, Tambaram'}
+            placeholder={compact ? 'e.g. Kovilpatti' : 'e.g. Kovilpatti, Kadambur, Sattur'}
             autoComplete="address-level2"
             value={values.city}
             onChange={field('city')}
@@ -163,6 +164,7 @@ export default function LeadForm({
 
       {/* Two clinics — a dropdown would hide both behind a click to save no
           space at all. As badges they are visible, comparable and one tap. */}
+      {!SINGLE_BRANCH && (
       <fieldset className="field field--choice">
         <legend className="field__label">
           <Icon name="MapPin" size={15} />
@@ -185,7 +187,7 @@ export default function LeadForm({
               </span>
               <span className="badge__text">
                 <strong>{b.name}</strong>
-                <small>Chennai</small>
+                <small>Tamil Nadu</small>
               </span>
             </label>
           ))}
@@ -193,6 +195,7 @@ export default function LeadForm({
 
         {errors.branch && <span className="field__error">{errors.branch}</span>}
       </fieldset>
+      )}
 
       {/* In both variants. It is a field that opens a calendar, not an inline
           grid, so it costs the popup one row rather than a whole month. */}

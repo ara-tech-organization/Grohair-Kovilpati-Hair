@@ -46,7 +46,7 @@ export default function BeforeAfter() {
             key={item.src}
             className={`ba__shot${n === i ? ' is-on' : ''}`}
             src={item.src}
-            alt={n === i ? `Before and after — ${item.treatment} at our Chennai clinic` : ''}
+            alt={n === i ? `Before and after — ${item.treatment} at our Kovilpatti clinic` : ''}
             aria-hidden={n === i ? undefined : true}
             /* The first case is on screen immediately; the rest are only ever
                needed a few seconds later. */

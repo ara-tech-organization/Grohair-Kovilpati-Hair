@@ -1,51 +1,110 @@
 # Single-page app on Apache (Hostinger).
 #
-# The nav writes real paths into the address bar — /treatments, /about,
-# /results, /reviews, /faq, /thank-you — but only index.html exists on disk.
-# That is fine while the visitor stays in the tab, because those paths are
-# pushed by history.pushState and never requested from the server. The moment
-# someone refreshes, opens one in a new tab, or follows a shared link, Apache
-# is asked for a file that is not there and answers 404.
+# This file ships in public/, so the build copies it to dist/.htaccess and it
+# lands at public_html/hair/.htaccess — inside the app's folder, not beside it.
+# Everything absolute below therefore carries /hair/, and must stay in step with
+# `base` in vite.config.js. Built with one root and served from another, the
+# rewrite points at an index.html that is not there and the page comes back
+# blank.
+#
+# The nav writes real paths into the address bar — /hair/treatments, /hair/about,
+# /hair/results, /hair/reviews, /hair/faq, /hair/thank-you — but only index.html
+# exists on disk. That is fine while the visitor stays in the tab, because those
+# paths are pushed by history.pushState and never requested from the server. The
+# moment someone refreshes, opens one in a new tab, or follows a shared link,
+# Apache is asked for a file that is not there and answers 404.
 #
 # This hands those requests to index.html and lets the app scroll to the
 # matching section on load. Real files and directories are served untouched, so
-# /api/email.php, the assets and the favicons are unaffected.
-#
-# The list is exhaustive on purpose. A blanket `RewriteRule . /index.html`
-# answers *every* URL with the homepage — /skin, /no, /anything-at-all all
-# returned the full site with a 200, which means a typo looks like a real page,
-# and search engines index unlimited duplicate URLs. Anything not named here now
-# falls through to Apache, which finds no file and serves 404.html with a real
-# 404 status. Add a path here only when the app can actually route to it.
+# the assets and the favicon are unaffected. The lead endpoint lives at
+# /api/email.php in the document root, above this folder, so nothing here can
+# reach it either way.
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  RewriteBase /
+  RewriteBase /hair/
 
-  # Anything that exists on disk wins — assets, images, and the PHP handler.
+  # Anything that exists on disk wins — assets and images are served directly.
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
 
-  # Leave the API alone even if a file is ever missing, so a broken endpoint
-  # returns a 404 rather than silently serving the site's HTML to a fetch().
-  RewriteRule ^api/ - [L]
-
   # The section ids the nav writes with pushState (see useCleanAnchors), plus
-  # the path the lead form pushes on success.
-  RewriteRule ^(top|about|results|treatments|reviews|faq|book|thank-you)/?$ /index.html [L]
+  # the path the lead form pushes on success. The pattern is matched after
+  # Apache strips the /hair/ prefix, which is what RewriteBase declares.
+  #
+  # The list is exhaustive on purpose. A blanket `RewriteRule . index.html`
+  # answers *every* URL with the homepage — /hair/skin, /hair/no,
+  # /hair/anything-at-all all returned the full site with a 200, which means a
+  # typo looks like a real page, and search engines index unlimited duplicate
+  # URLs. Anything not named here now falls through to Apache, which finds no
+  # file and serves 404.html with a real 404 status. Add a path here only when
+  # the app can actually route to it.
+  # `consultation` is the booking section. The DOM id is `book` and the slug is
+  # mapped in src/basePath.js; `book` stays listed because it is a URL the app
+  # used to write and old shared links still resolve to the same section.
+  RewriteRule ^(top|about|results|treatments|reviews|faq|consultation|book|thank-you)/?$ /hair/index.html [L]
 </IfModule>
 
 # Everything else. Without this Apache answers with its own bare error page.
-ErrorDocument 404 /404.html
+# The path is resolved from the document root, not from this folder, so the
+# /hair/ is required.
+ErrorDocument 404 /hair/404.html
 
-# Hashed filenames from the build are safe to cache hard; index.html must not
-# be, or a deploy leaves visitors on the previous bundle.
 <IfModule mod_headers.c>
-  <FilesMatch "\.(js|css|woff2|png|jpe?g|webp|svg)$">
+  # Vite fingerprints every built asset — index-i5WabP6x.js, Logo-iGWrOEx3.png.
+  # The name changes whenever the bytes do, so these can be cached hard: a
+  # deploy publishes new names rather than new contents under old names.
+  <FilesMatch "-[A-Za-z0-9_-]{8}\.(js|css|woff2?|png|jpe?g|webp|svg|avif)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
-  <FilesMatch "index\.html$">
+
+  # Unhashed files — favicon.png and anything dropped into public/ — keep their
+  # names across deploys, so a year of immutable caching would strand visitors
+  # on the old copy with no way to bust it. A week is long enough to be worth
+  # having and short enough to recover from.
+  <FilesMatch "^(?!.*-[A-Za-z0-9_-]{8}\.)[^/]*\.(png|jpe?g|webp|svg|avif|ico)$">
+    Header set Cache-Control "public, max-age=604800"
+  </FilesMatch>
+
+  # The HTML is what points at the hashed bundles, so it must never be held.
+  # Cached even briefly, a deploy leaves visitors on the previous bundle and the
+  # assets it names are already gone.
+  <FilesMatch "\.html$">
     Header set Cache-Control "no-cache"
   </FilesMatch>
 </IfModule>
+
+# Text compresses to a fraction of its size and the bundle is the single
+# heaviest thing on the page. Images and fonts are already compressed; running
+# them through deflate costs CPU and returns nothing.
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+  AddOutputFilterByType DEFLATE application/javascript text/javascript
+  AddOutputFilterByType DEFLATE application/json application/xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# Apache guesses at some of these and guesses wrong on others; a font served as
+# text/plain is refused by the browser and the page falls back to a system face.
+<IfModule mod_mime.c>
+  AddType application/javascript js mjs
+  AddType font/woff2 woff2
+  AddType image/svg+xml svg
+  AddType image/webp webp
+  AddType image/avif avif
+</IfModule>
+
+# The site is a marketing page with no login and no cookies worth stealing, so
+# this is a short list rather than a full policy: stop other sites framing it,
+# stop browsers second-guessing the content types declared above, and keep the
+# full URL out of the Referer sent to third parties.
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Directory listings. Without this, any folder that has no index.html — assets/,
+# for one — returns a browsable file list.
+Options -Indexes
